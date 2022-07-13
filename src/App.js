@@ -1,26 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
-import LoginView from "./auth/login.jsx";
-function App() {
+import React from 'react';
+import { ThemeProvider } from '@material-ui/core';
+import GlobalStyles from '../src/Components/GlobalStyles';
+import theme from './theme';
+import Routes from './router/routes';
+import { useRoutes } from 'react-router-dom';
+
+const App = () => {
+  const routing = useRoutes(Routes);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <LoginView/>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      {routing}
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
