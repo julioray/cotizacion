@@ -1,12 +1,14 @@
-import React from 'react';
-import { ThemeProvider } from '@material-ui/core';
-import GlobalStyles from '../src/Components/GlobalStyles';
-import theme from './theme';
-import Routes from './router/routes';
+import 'react-perfect-scrollbar/dist/css/styles.css';
 import { useRoutes } from 'react-router-dom';
+import { ThemeProvider } from '@material-ui/core';
+import GlobalStyles from 'src/components/GlobalStyles';
+import 'src/mixins/chartjs';
+import theme from 'src/theme';
+import routes from 'src/routes';
 
 const App = () => {
-  const routing = useRoutes(Routes);
+  const routing = useRoutes(routes);
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
