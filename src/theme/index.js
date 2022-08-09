@@ -1,43 +1,24 @@
-import { createMuiTheme } from '@material-ui/core/styles';
-// A custom theme for this app
+import { createMuiTheme, colors } from '@material-ui/core';
+import shadows from './shadows';
+import typography from './typography';
+
 const theme = createMuiTheme({
   palette: {
-    type: 'light',
-    primary: {
-      main: '#143D71', //azul
-      light: '#61dafb',
-      dark: '#f50057', // fuscia
-      contrastText: '#fff',
-    },
-    secondary: {
-      main: '#05C6AF',
-      light: '#61dafb', //celeste
-      dark: '#21a1c4',
-      contrastText: '#fff',
-    },
-   
     background: {
-      default: '#282c34',
+      default: '#F4F6F8',
+      paper: colors.common.white
     },
+    primary: {
+      contrastText: '#ffffff',
+      main: '#00acc1'
+    },
+    text: {
+      primary: '#172b4d',
+      secondary: '#6b778c'
+    }
   },
-  overrides: {
-    MuiPaper: {
-      root: {
-        padding: '20px 10px',
-        margin: '10px',
-        backgroundColor: '#fff', // 5d737e
-      },
-    },
-    MuiButton: {
-      root: {
-        margin: '5px',
-      },
-    },
-  },
-  // typography: {
-  //   h6: {
-  //     fontWeight: 600 // or 'bold'
-  //   }
-  // }
+  shadows,
+  typography
 });
+
 export default theme;
