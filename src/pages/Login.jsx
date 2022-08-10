@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import * as Yup from 'yup';
@@ -8,12 +9,14 @@ import {
   Container,
   Link,
   TextField,
-  Typography
+  Typography,
+  Alert
 } from '@material-ui/core';
 import { signIn } from '../services/firebase/firebaseMethods';
 
 const Login = () => {
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState('');
 
   return (
     <>
@@ -49,6 +52,11 @@ const Login = () => {
                 await signIn(values.email, values.password);
                 navigate('/app/dashboard', { replace: true });
               } catch (e) {
+                console.log(e.message);
+                console.log('code', e.code);
+                if (e.code === 'auth/wrong-password') {
+                  setErrorMessage('La contraseña es incorrecta');
+                }
                 console.log('in catchhhh');
                 console.log(e.message);
                 setSubmitting(false);
@@ -66,6 +74,10 @@ const Login = () => {
             }) => (
               <form onSubmit={handleSubmit}>
                 <Box sx={{ mb: 3 }}>
+                  <Box mb={3}>
+                    <Alert severity="error">{errorMessage}</Alert>
+                  </Box>
+
                   <Typography color="textPrimary" variant="h2">
                     Inicio de Sesion
                   </Typography>
