@@ -10,7 +10,7 @@
 - Implement `react-router` v6 routing method
 - Remove extra views
 - Remove `node-sass` dependency
-- Update all components to match the PRO version style
+- Update all Components to match the PRO version style
 - Update dependencies
 - Update folder structure to remove folder depth
 - Update theme configuration
@@ -26,7 +26,7 @@
 - Remove unused `.scss` files from `assets` folder
 - Replace `.jsx` with `.js`
 - Replace Class Components with Function Components
-- Replace custom cumponents (Portlet) with Material-UI built-in components
+- Replace custom cumponents (Portlet) with Material-UI built-in Components
 - Replace dependency `classnames` with `clsx`
 - Update dependencies
 - Update the layout to match the PRO version
@@ -54,7 +54,7 @@
 - Remove "status" from `ProductCard` component since it was not part of released design
 - Remove `auth` service folder since it won't be implemented for this version
 - Remove `authGuard` since it won't be used in this version
-- Remove unused components from shared components
+- Remove unused Components from shared Components
 - Remove unused scss from assets
 - Update README.md
 

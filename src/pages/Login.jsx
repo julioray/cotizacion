@@ -57,6 +57,8 @@ const Login = () => {
                 if (e.code === 'auth/wrong-password') {
                   setErrorMessage('La contraseña es incorrecta');
                 }
+                console.log('in catchhhh');
+                console.log(e.message);
                 setSubmitting(false);
               }
             }}
