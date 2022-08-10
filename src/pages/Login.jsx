@@ -10,6 +10,7 @@ import {
   TextField,
   Typography
 } from '@material-ui/core';
+import { signIn } from '../services/firebase/firebaseMethods';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -31,18 +32,27 @@ const Login = () => {
         <Container maxWidth="sm">
           <Formik
             initialValues={{
-              email: 'demo@devias.io',
-              password: 'Password123'
+              email: '@gmail.com',
+              password: ''
             }}
             validationSchema={Yup.object().shape({
               email: Yup.string()
-                .email('Must be a valid email')
+                .email('No es un email valido')
                 .max(255)
-                .required('Email is required'),
-              password: Yup.string().max(255).required('Password is required')
+                .required('Email es obligatorio'),
+              password: Yup.string()
+                .max(255)
+                .required('Password es obligatorio')
             })}
-            onSubmit={() => {
-              navigate('/app/dashboard', { replace: true });
+            onSubmit={async (values, { setSubmitting }) => {
+              try {
+                await signIn(values.email, values.password);
+                navigate('/app/dashboard', { replace: true });
+              } catch (e) {
+                console.log('in catchhhh');
+                console.log(e.message);
+                setSubmitting(false);
+              }
             }}
           >
             {({
