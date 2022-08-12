@@ -35,8 +35,8 @@ const Login = () => {
         <Container maxWidth="sm">
           <Formik
             initialValues={{
-              email: '@gmail.com',
-              password: ''
+              email: 'julio@gmail.com',
+              password: 'julioray'
             }}
             validationSchema={Yup.object().shape({
               email: Yup.string()
@@ -57,7 +57,9 @@ const Login = () => {
                 if (e.code === 'auth/wrong-password') {
                   setErrorMessage('La contraseña es incorrecta');
                 }
-                console.log('in catchhhh');
+                if (e.code === 'auth/user-not-found') {
+                  setErrorMessage('Ingrese el usuario Correcto');
+                }
                 console.log(e.message);
                 setSubmitting(false);
               }
@@ -74,10 +76,11 @@ const Login = () => {
             }) => (
               <form onSubmit={handleSubmit}>
                 <Box sx={{ mb: 3 }}>
-                  <Box mb={3}>
-                    <Alert severity="error">{errorMessage}</Alert>
-                  </Box>
-
+                  {errorMessage && (
+                    <Box mb={3}>
+                      <Alert severity="error">{errorMessage}</Alert>
+                    </Box>
+                  )}
                   <Typography color="textPrimary" variant="h2">
                     Inicio de Sesion
                   </Typography>
